@@ -6,17 +6,24 @@ import Todo from "./Todo";
 const Todos = ({ todos, completeTodo }) => {
   return (
     <section className="todos">
-      {todos.map((todo, index) => {
-        return (
-          <Todo
-            key={index}
-            isCompleted={todo.isCompleted}
-            text={todo.text}
-            completeTodo={completeTodo}
-            index={index}
-          />
-        );
-      })}
+      {todos.length > 0 &&
+        todos.map((todo, index) => {
+          return (
+            <Todo
+              key={index}
+              isCompleted={todo.isCompleted}
+              text={todo.text}
+              completeTodo={completeTodo}
+              index={index}
+            />
+          );
+        })}
+      {todos.length === 0 && (
+        <div className="todo-placheholder-text">
+          Add Todo by click on{" "}
+          <span className="add-button-placeholder"> Add </span>
+        </div>
+      )}
     </section>
   );
 };
