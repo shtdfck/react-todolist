@@ -2,21 +2,25 @@
 import { jsx, css } from "@emotion/core";
 import PropTypes from "prop-types";
 
-const container = ({
+const Container = ({
   children,
   flexDirection,
   flexWrap,
-  justifyConten,
+  justifyContent,
+  alignContent,
   alignItems,
-  alignContent
+  height,
+  minHeight
 }) => {
   const containerStyles = css`
     display: flex;
     flex-direction: ${flexDirection};
     flex-wrap: ${flexWrap};
-    justify-content: ${justifyConten};
-    align-content: ${alignItems};
-    align-content: ${alignContent}
+    justify-content: ${justifyContent};
+    align-content: ${alignContent};
+    align-items: ${alignItems};
+    height: ${height};
+    min-height: ${minHeight};
   `;
   return (
     <div className="flex-container" css={containerStyles}>
@@ -25,15 +29,17 @@ const container = ({
   );
 };
 
-container.defaultProps = {
+Container.defaultProps = {
   flexDirection: "row",
   flexWrap: "nowrap",
-  justifyConten: "flex-start",
+  justifyContent: "flex-start",
   alignItems: "stretch",
-  alignContent: "stretch"
+  alignContent: "stretch",
+  height: "auto",
+  minHeight: "initial"
 };
 
-container.propTypes = {
+Container.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -45,7 +51,7 @@ container.propTypes = {
     "column-reverse"
   ]),
   flexWrap: PropTypes.oneOf(["nowrap", "wrap", "wrap-reverse"]),
-  justifyConten: PropTypes.oneOf([
+  justifyContent: PropTypes.oneOf([
     "flex-start",
     "flex-end",
     "center",
@@ -67,24 +73,25 @@ container.propTypes = {
     "last baseline",
     "start",
     "end",
-    "selt-start",
-    "selt-end"
+    "self-start",
+    "self-end"
   ]),
-  alignContent: PropTypes.oneOf({
+  alignContent: PropTypes.oneOf([
     "flex-start",
     "flex-end",
     "center",
     "space-between",
     "space-arround",
-    "spce-evenly",
+    "space-evenly",
     "stretch",
     "start",
     "end",
     "baseline",
     "first baseline",
-    "last baseline",
-
-  })
+    "last baseline"
+  ]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  minHeight: PropTypes.string
 };
 
-export default container;
+export default Container;

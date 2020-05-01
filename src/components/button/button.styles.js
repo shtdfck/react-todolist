@@ -18,7 +18,6 @@ export const button = ({ color, align, theme }) => {
   }
 
   return css`
-    width: 24%;
     color: ${textColor};
     text-align: ${align};
     font-size: 1.8rem;
