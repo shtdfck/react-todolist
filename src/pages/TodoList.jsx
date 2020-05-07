@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage";
 import Paper from "../components/paper/Paper";
 import Header from "../components/header/Header";
 import TodoForm from "../components/todoform/TodoForm";
@@ -8,12 +9,7 @@ import Todos from "../components/todos/Todos";
 import Container from "../layout/Container";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { text: "learning react", isCompleted: false },
-    { text: "learning react hooks", isCompleted: false },
-    { text: "learning styling in react!", isCompleted: false }
-  ]);
-
+  const [todos, setTodos] = useStateWithLocalStorage("todos");
   const [showAdd, setShowAdd] = useState(false);
 
   const addTodo = value => {

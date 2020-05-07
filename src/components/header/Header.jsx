@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useTheme } from "emotion-theming";
 
-import Button from "../button/ButtonNoJsx";
+import Button from "../button/ButtonClass";
 import Container from "../../layout/Container";
 import Item from "../../layout/Item";
 // import styles from "./header.module.css";
@@ -29,7 +29,7 @@ const Header = ({ showAddToggle, showAdd, clearTodos }) => {
   );
 };
 
-Header.prototype = {
+Header.propTypes = {
   showAddToggle: PropTypes.func.isRequired,
   showAdd: PropTypes.bool.isRequired,
   clearTodos: PropTypes.func.isRequired
